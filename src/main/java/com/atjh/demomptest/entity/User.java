@@ -1,9 +1,6 @@
 package com.atjh.demomptest.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -20,4 +17,8 @@ public class User {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime; //update_time
+
+    @Version
+    @TableField(fill = FieldFill.INSERT)
+    private Integer version;
 }

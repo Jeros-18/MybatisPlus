@@ -16,11 +16,20 @@ class DemomptestApplicationTests {
     @Autowired
     private UserMapper userMapper;
 
+    //测试乐观锁
+    @Test
+    public void testOptimisticLocker(){
+        User user = userMapper.selectById(1412768557699211266l);
+        user.setName("zhangsan");
+        userMapper.updateById(user);
+
+    }
+
     //修改
     @Test
     public void testUpdate(){
         User user = new User();
-        user.setId(1412697892593876993L);
+        user.setId(1412768557699211266l);
         user.setName("lucyMaaaa");
         int count = userMapper.updateById(user);
         System.out.println(count);
@@ -32,7 +41,7 @@ class DemomptestApplicationTests {
     @Test
     public void testAdd() {
         User user = new User();
-        user.setName("lucyeee");
+        user.setName("lisi");
         user.setAge(20);
         user.setEmail("1243@qq.com");
         int insert = userMapper.insert(user);
